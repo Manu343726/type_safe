@@ -7,7 +7,7 @@ conan_basic_setup()
 
 add_conan_library(type_safe)
 
-add_executable(example example.cpp)
+add_executable(example ${CMAKE_CURRENT_SOURCE_DIR}/../example/optional.cpp)
 if(NOT MSVC)
     target_compile_options(example PRIVATE -std=c++11)
 endif()
