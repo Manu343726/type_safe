@@ -8,7 +8,7 @@ class TypeSafe(ConanFile):
     version = '0.1'
     username = 'Manu343726'
     channel = 'testing'
-    requires = 'debug_assert/1.0@Manu343726/testing'
+    requires = 'debug_assert/1.1@Manu343726/testing'
     exports = '*.hpp'
     generators = 'cmake'
 
