@@ -711,3 +711,27 @@ TEST_CASE("rarely_empty_variant")
         check_variant_empty(var);
     }
 }
+
+TEST_CASE("variant of pointers")
+{
+    class A{};
+    class B{};
+    class C{};
+
+    using variant_t = type_safe::variant<A*, B*, C*>;
+    using empty_variant_t = type_safe::basic_variant<
+        type_safe::never_empty_variant_policy,
+        A*, B*, C*
+    >;
+
+    SECTION("copy always has value")
+    {
+        variant_t variant{static_cast<A*>(nullptr)};
+        REQUIRE(variant.has_value());
+        CHECK(variant.value(type_safe::variant_type<A*>()) == nullptr);
+
+        auto copy = variant;
+        REQUIRE(copy.has_value());
+        CHECK(copy.value(type_safe::variant_type<A*>()) == nullptr);
+    }
+}
