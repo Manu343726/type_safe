@@ -8,6 +8,8 @@ project(TYPE_SAFE)
 
 include(external/external.cmake)
 
+set(TYPE_SAFE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}")
+
 # options
 if(CMAKE_BUILD_TYPE MATCHES Debug)
     set(_type_safe_default_assertions ON)
